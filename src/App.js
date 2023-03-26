@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+import Form from './components/Form'
+import Header from './components/Header'
+import { ThemeContext } from './context/ThemeContext'
 
-function App() {
+const App = () => {
+  const {theme} = useContext(ThemeContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={theme === 'light' ? 'bg-red-300 h-[100vh] text-purple-500' : 'bg-gray-700 h-[100vh] text-slate-300'}>
+      <Header />
+      <div className='flex justify-center p-10'>
+        <Form />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
